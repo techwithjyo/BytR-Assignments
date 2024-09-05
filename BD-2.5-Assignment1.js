@@ -279,5 +279,5 @@ app.get("/products", (req, res) => {
   res.json({ products });
 });
 
-const PORT = 3000;
+const PORT = 3005;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
