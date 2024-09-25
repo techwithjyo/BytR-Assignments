@@ -90,7 +90,7 @@ const dummyData = [
 
 app.get('/seed_db', async (req, res) => {
   try {
-    await sequelize.sync({ force: true }); // This will drop the table if it already exists
+    await sequelize.sync({ force: true }); 
     await Track.bulkCreate(dummyData);
     res.status(200).send('Database seeded successfully');
   } catch (error) {
