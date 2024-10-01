@@ -5,7 +5,7 @@ const Track = sequelize.define('track', {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  artist: {
+  artist: { 
     type: DataTypes.TEXT,
     allowNull: false,
   },
