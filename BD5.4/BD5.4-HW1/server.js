@@ -1,23 +1,25 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { sequelize } = require('./lib/index');
-const Author = require('./models/author.model');
-const Book = require('./models/book.model');
-const BookAuthor = require('./models/book.model');
+const express = require("express");
+const bodyParser = require("body-parser");
+const { sequelize } = require("./lib/index");
+const Author = require("./models/author.model");
+const Book = require("./models/book.model");
+const BookAuthor = require("./models/book.model");
 
 const app = express();
 const port = 3000;
 app.use(bodyParser.json());
 
 const dummyBooks = [
-  { title: "Harry Potter and the Philosopher's Stone", genre: "Fantasy", publicationYear: 1997 },
+  {
+    title: "Harry Potter and the Philosopher's Stone",
+    genre: "Fantasy",
+    publicationYear: 1997,
+  },
   { title: "A Game of Thrones", genre: "Fantasy", publicationYear: 1996 },
   { title: "The Hobbit", genre: "Fantasy", publicationYear: 1937 },
 ];
 
-const dummyAuthors = [
-  { name: "J.K Rowling", birthYear: 1965 },
-];
+const dummyAuthors = [{ name: "J.K Rowling", birthYear: 1965 }];
 
 app.get("/seed_db", async (req, res) => {
   try {
@@ -31,10 +33,12 @@ app.get("/seed_db", async (req, res) => {
   }
 });
 
-app.post('/authors/new', async (req, res) => {
+app.post("/authors/new", async (req, res) => {
   const newAuthor = req.body.newAuthor;
   if (!newAuthor) {
-    return res.status(400).json({ error: "newAuthor is required in the request body" });
+    return res
+      .status(400)
+      .json({ error: "newAuthor is required in the request body" });
   }
   try {
     const author = await Author.create(newAuthor);
@@ -44,7 +48,7 @@ app.post('/authors/new', async (req, res) => {
   }
 });
 
-app.post('/authors/update/:id', async (req, res) => {
+app.post("/authors/update/:id", async (req, res) => {
   const id = parseInt(req.params.id, 10);
   const newAuthorData = req.body;
   try {
